@@ -289,11 +289,25 @@ body {
     alt="朝の学校"
 
     class="morning-image"
+onclick="showShoebox()"
+  >
+
+</section>
+<!-- 下駄箱 -->
+
+<section id="shoeboxScreen" class="screen">
+
+  <img
+
+    src="03_shoebox.PNG"
+
+    alt="朝の下駄箱"
+
+    class="morning-image"
 
   >
 
 </section>
-
 <script>
 
 function showWarning() {
@@ -327,7 +341,13 @@ function startGame() {
     .classList.add("active");
 
 }
+function showShoebox() {
 
+  document.getElementById("morningScreen").classList.remove("active");
+
+  document.getElementById("shoeboxScreen").classList.add("active");
+
+}
 </script>
 
 </body>
