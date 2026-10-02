@@ -1,24 +1,230 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="ja">
 
-<meta charset="utf-8">
+<head>
 
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>コックリさんの呪い</title>
 
-<body style="margin:0;background:#000;color:#fff;text-align:center;font-family:sans-serif;padding-top:30vh">
+<style>
 
-<h2>学校の怪談シリーズ Ver.1</h2>
+* {
 
-<h1>コックリさんの呪い</h1>
+  box-sizing: border-box;
 
-<button onclick="alert('成功です！')" style="font-size:20px;padding:14px 24px">
+}
 
-ゲームを始める
+body {
 
-</button>
+  margin: 0;
+
+  background: #000;
+
+  color: #fff;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+
+               "Yu Gothic", sans-serif;
+
+}
+
+.screen {
+
+  min-height: 100svh;
+
+  display: none;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+}
+
+.screen.active {
+
+  display: flex;
+
+}
+
+/* タイトル */
+
+#titleScreen {
+
+  position: relative;
+
+  overflow: hidden;
+
+}
+
+.title-image {
+
+  width: 100%;
+
+  height: 100svh;
+
+  object-fit: contain;
+
+  display: block;
+
+}
+
+.start-button {
+
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 8%;
+
+  transform: translateX(-50%);
+
+  padding: 15px 32px;
+
+  border: 1px solid rgba(255,255,255,.75);
+
+  border-radius: 8px;
+
+  background: rgba(0,0,0,.72);
+
+  color: #fff;
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+}
+
+/* 注意画面 */
+
+#warningScreen {
+
+  padding: 30px 24px;
+
+  text-align: center;
+
+}
+
+.warning-box {
+
+  width: min(100%, 520px);
+
+  line-height: 1.9;
+
+}
+
+.warning-box h2 {
+
+  margin-bottom: 28px;
+
+}
+
+.warning-box p {
+
+  margin: 0 0 22px;
+
+}
+
+.warning-button {
+
+  margin-top: 20px;
+
+  padding: 15px 30px;
+
+  border: 1px solid #aaa;
+
+  border-radius: 8px;
+
+  background: #181818;
+
+  color: #fff;
+
+  font-size: 18px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section id="titleScreen" class="screen active">
+
+  <img src="01_title.PNG"
+
+       alt="学校の怪談シリーズ Ver.1 コックリさんの呪い"
+
+       class="title-image">
+
+  <button class="start-button" onclick="showWarning()">
+
+    ゲームを始める
+
+  </button>
+
+</section>
+
+<section id="warningScreen" class="screen">
+
+  <div class="warning-box">
+
+    <h2>― ご注意 ―</h2>
+
+    <p>
+
+      このゲームはフィクションです。<br>
+
+      作中には「コックリさん」を題材とした恐怖演出が登場します。
+
+    </p>
+
+    <p>
+
+      実際にコックリさんを行ったり、真似したりしないでください。
+
+    </p>
+
+    <p>
+
+      また、暗い画面演出・効果音・恐怖表現が含まれます。<br>
+
+      苦手な方はご注意ください。
+
+    </p>
+
+    <p>
+
+      覚悟を決めて、お進みください。
+
+    </p>
+
+    <button class="warning-button">
+
+      ゲームを始める
+
+    </button>
+
+  </div>
+
+</section>
+
+<script>
+
+function showWarning() {
+
+  document.getElementById("titleScreen").classList.remove("active");
+
+  document.getElementById("warningScreen").classList.add("active");
+
+}
+
+</script>
 
 </body>
 
