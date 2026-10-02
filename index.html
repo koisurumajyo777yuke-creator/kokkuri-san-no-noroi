@@ -26,9 +26,17 @@ body {
 
   color: #fff;
 
-  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+  font-family:
 
-               "Yu Gothic", sans-serif;
+    -apple-system,
+
+    BlinkMacSystemFont,
+
+    "Hiragino Kaku Gothic ProN",
+
+    "Yu Gothic",
+
+    sans-serif;
 
 }
 
@@ -52,7 +60,11 @@ body {
 
 }
 
-/* タイトル */
+/* =========================
+
+   タイトル画面
+
+========================= */
 
 #titleScreen {
 
@@ -100,7 +112,11 @@ body {
 
 }
 
-/* 注意画面 */
+/* =========================
+
+   注意画面
+
+========================= */
 
 #warningScreen {
 
@@ -148,27 +164,69 @@ body {
 
 }
 
+/* =========================
+
+   朝の学校
+
+========================= */
+
+#morningScreen {
+
+  position: relative;
+
+  overflow: hidden;
+
+}
+
+.morning-image {
+
+  width: 100%;
+
+  height: 100svh;
+
+  object-fit: contain;
+
+  display: block;
+
+  background: #000;
+
+}
+
 </style>
 
 </head>
 
 <body>
 
+<!-- タイトル -->
+
 <section id="titleScreen" class="screen active">
 
-  <img src="01_title.PNG"
+  <img
 
-       alt="学校の怪談シリーズ Ver.1 コックリさんの呪い"
+    src="01_title.PNG"
 
-       class="title-image">
+    alt="学校の怪談シリーズ Ver.1 コックリさんの呪い"
 
-  <button class="start-button" onclick="showWarning()">
+    class="title-image"
+
+  >
+
+  <button
+
+    class="start-button"
+
+    onclick="showWarning()"
+
+  >
 
     ゲームを始める
 
   </button>
 
 </section>
+
+<!-- 注意 -->
 
 <section id="warningScreen" class="screen">
 
@@ -204,7 +262,13 @@ body {
 
     </p>
 
-   <button class="warning-button" onclick="startGame()">
+    <button
+
+      class="warning-button"
+
+      onclick="startGame()"
+
+    >
 
       ゲームを始める
 
@@ -214,20 +278,56 @@ body {
 
 </section>
 
+<!-- 朝の学校 -->
+
+<section id="morningScreen" class="screen">
+
+  <img
+
+    src="02_school_morning.PNG"
+
+    alt="朝の学校"
+
+    class="morning-image"
+
+  >
+
+</section>
+
 <script>
 
 function showWarning() {
 
-  document.getElementById("titleScreen").classList.remove("active");
+  document
 
-  document.getElementById("warningScreen").classList.add("active");
+    .getElementById("titleScreen")
+
+    .classList.remove("active");
+
+  document
+
+    .getElementById("warningScreen")
+
+    .classList.add("active");
 
 }
+
 function startGame() {
 
-  document.getElementById("warningScreen").classList.add("hidden");
+  document
+
+    .getElementById("warningScreen")
+
+    .classList.remove("active");
+
+  document
+
+    .getElementById("morningScreen")
+
+    .classList.add("active");
 
 }
+
 </script>
 
 </body>
