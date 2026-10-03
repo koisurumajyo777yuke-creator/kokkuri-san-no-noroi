@@ -723,7 +723,9 @@ function showScene() {
   storyImage.src = scene.image;
 
   storyText.textContent = scene.text;
+storyText.style.color = "";
 
+storyText.classList.remove("shake");
   if (scene.chime) {
 
     schoolChime.currentTime = 0;
