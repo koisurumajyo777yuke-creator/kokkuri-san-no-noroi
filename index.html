@@ -682,7 +682,9 @@ threeKnocksSound.preload = "auto";
 const stairFootstepsSound = new Audio("04_stair_footsteps.wav");
 
 stairFootstepsSound.preload = "auto";
-  
+ const scienceScrapeSound = new Audio("05_science_scrape.wav");
+
+scienceScrapeSound.preload = "auto"; 
   
 titleScreen.addEventListener("click", () => {
 
@@ -746,6 +748,12 @@ if (scene.threeKnocks) {
     stairFootstepsSound.currentTime = 0;
 
     stairFootstepsSound.play().catch(() => {});
+
+}if (scene.scienceScrape) {
+
+  scienceScrapeSound.currentTime = 0;
+
+  scienceScrapeSound.play().catch(() => {});
 
 }  
 if (scene.scaryNo) {
