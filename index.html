@@ -665,8 +665,8 @@ stairFootsteps: true
 
   image: "21_skeleton_closeup.PNG",
 
-  text: "……もう一度、骨格標本を見る"
-
+  text: "……もう一度、骨格標本を見る",
+boneClick: true
 }
 
 ];
@@ -693,7 +693,9 @@ stairFootstepsSound.preload = "auto";
  const scienceScrapeSound = new Audio("05_science_scrape.wav");
 
 scienceScrapeSound.preload = "auto"; 
-  
+const boneClickSound = new Audio("06_bone_click.wav");
+
+boneClickSound.preload = "auto";  
 titleScreen.addEventListener("click", () => {
 
   titleScreen.classList.remove("active");
@@ -764,6 +766,12 @@ if (scene.threeKnocks) {
   scienceScrapeSound.currentTime = 0;
 
   scienceScrapeSound.play().catch(() => {});
+
+}if (scene.boneClick) {
+
+    boneClickSound.currentTime = 0;
+
+    boneClickSound.play().catch(() => {});
 
 }  
 if (scene.scaryNo) {
