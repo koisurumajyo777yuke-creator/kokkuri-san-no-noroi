@@ -60,11 +60,7 @@ body {
 
 }
 
-/* =========================
-
-   タイトル画面
-
-========================= */
+/* タイトル */
 
 #titleScreen {
 
@@ -112,11 +108,7 @@ body {
 
 }
 
-/* =========================
-
-   注意画面
-
-========================= */
+/* 注意画面 */
 
 #warningScreen {
 
@@ -164,21 +156,19 @@ body {
 
 }
 
-/* =========================
+/* 画像確認画面 */
 
-   朝の学校
-
-========================= */
-
-#morningScreen {
+#gameScreen {
 
   position: relative;
 
   overflow: hidden;
 
+  cursor: pointer;
+
 }
 
-.morning-image {
+.game-image {
 
   width: 100%;
 
@@ -189,6 +179,26 @@ body {
   display: block;
 
   background: #000;
+
+}
+
+.counter {
+
+  position: absolute;
+
+  top: 12px;
+
+  right: 12px;
+
+  padding: 6px 10px;
+
+  border-radius: 6px;
+
+  background: rgba(0,0,0,.65);
+
+  color: #fff;
+
+  font-size: 14px;
 
 }
 
@@ -278,37 +288,89 @@ body {
 
 </section>
 
-<!-- 朝の学校 -->
+<!-- 画像確認 -->
 
-<section id="morningScreen" class="screen">
+<section id="gameScreen" class="screen" onclick="nextImage()">
 
   <img
+
+    id="gameImage"
 
     src="02_school_morning.PNG"
 
-    alt="朝の学校"
+    alt="ゲーム画像"
 
-    class="morning-image"
-onclick="showShoebox()"
-  >
-
-</section>
-<!-- 下駄箱 -->
-
-<section id="shoeboxScreen" class="screen">
-
-  <img
-
-    src="03_shoebox.PNG"
-
-    alt="朝の下駄箱"
-
-    class="morning-image"
+    class="game-image"
 
   >
 
+  <div id="counter" class="counter">
+
+    02 / 27
+
+  </div>
+
 </section>
+
 <script>
+
+const images = [
+
+  "02_school_morning.PNG",
+
+  "03_shoebox.PNG",
+
+  "04_hallway.PNG",
+
+  "05_stairs_day.PNG",
+
+  "06_classroom_day.PNG",
+
+  "07_artroom_day.PNG",
+
+  "08_scienceroom_day.PNG",
+
+  "09_musicroom_day.PNG",
+
+  "10_kokkuri_day.PNG",
+
+  "11_school_night.PNG",
+
+  "12_kokkuri_night.PNG",
+
+  "13_kokkuri_yes.PNG",
+
+  "14_kokkuri_chi.PNG",
+
+  "15_kokkuri_no.PNG",
+
+  "16_toilet_night.PNG",
+
+  "17_toilet_door.PNG",
+
+  "18_stairs_night.PNG",
+
+  "19_stairs_figure.PNG",
+
+  "20_science_night.PNG",
+
+  "21_skeleton_closeup.PNG",
+
+  "22_music_night.PNG",
+
+  "23_beethoven.PNG",
+
+  "24_four_corners.PNG",
+
+  "25_four_corners_dark.PNG",
+
+  "26_final_yes_coin.PNG",
+
+  "27_classroom_door.PNG"
+
+];
+
+let currentImage = 0;
 
 function showWarning() {
 
@@ -336,18 +398,42 @@ function startGame() {
 
   document
 
-    .getElementById("morningScreen")
+    .getElementById("gameScreen")
 
     .classList.add("active");
 
-}
-function showShoebox() {
-
-  document.getElementById("morningScreen").classList.remove("active");
-
-  document.getElementById("shoeboxScreen").classList.add("active");
+  showImage();
 
 }
+
+function showImage() {
+
+  document.getElementById("gameImage").src =
+
+    images[currentImage];
+
+  const number =
+
+    String(currentImage + 2).padStart(2, "0");
+
+  document.getElementById("counter").textContent =
+
+    number + " / 27";
+
+}
+
+function nextImage() {
+
+  if (currentImage < images.length - 1) {
+
+    currentImage++;
+
+    showImage();
+
+  }
+
+}
+
 </script>
 
 </body>
