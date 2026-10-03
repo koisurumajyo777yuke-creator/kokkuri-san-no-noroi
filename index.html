@@ -185,7 +185,25 @@ button {
   animation: blink 1.2s infinite;
 
 }
+.shake {
 
+  animation: shake 0.08s infinite;
+
+}
+
+@keyframes shake {
+
+  0%   { transform: translate(0, 0); }
+
+  25%  { transform: translate(-4px, 2px); }
+
+  50%  { transform: translate(4px, -2px); }
+
+  75%  { transform: translate(-3px, -2px); }
+
+  100% { transform: translate(3px, 2px); }
+
+}
 </style>
 
 </head>
