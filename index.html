@@ -767,13 +767,17 @@ if (scene.threeKnocks) {
 
   scienceScrapeSound.play().catch(() => {});
 
-}if (scene.boneClick) {
+ if (scene.boneClick) {
 
     boneClickSound.currentTime = 0;
 
-    boneClickSound.play().catch(() => {});
+    setTimeout(() => {
 
-}  
+        boneClickSound.play().catch(() => {});
+
+    }, 300);
+
+}
 if (scene.scaryNo) {
 
   storyText.style.color = "red";
