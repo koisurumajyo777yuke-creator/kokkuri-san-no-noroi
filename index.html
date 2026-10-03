@@ -8,7 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>コックリさんの呪い</title>
+<title>学校の怪談シリーズ Ver.1 コックリさんの呪い</title>
 
 <style>
 
@@ -26,31 +26,23 @@ body {
 
   color: #fff;
 
-  font-family:
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
 
-    -apple-system,
-
-    BlinkMacSystemFont,
-
-    "Hiragino Kaku Gothic ProN",
-
-    "Yu Gothic",
-
-    sans-serif;
+  overflow: hidden;
 
 }
 
 .screen {
 
-  min-height: 100svh;
-
   display: none;
 
-  align-items: center;
+  position: relative;
 
-  justify-content: center;
+  width: 100vw;
 
-  flex-direction: column;
+  height: 100dvh;
+
+  background: #000;
 
 }
 
@@ -60,59 +52,61 @@ body {
 
 }
 
-/* タイトル */
-
 #titleScreen {
 
-  position: relative;
+  align-items: center;
 
-  overflow: hidden;
+  justify-content: center;
 
 }
 
-.title-image {
+.full-image {
 
   width: 100%;
 
-  height: 100svh;
+  height: 100%;
 
-  object-fit: contain;
-
-  display: block;
+  object-fit: cover;
 
 }
 
-.start-button {
+#titleScreen::after {
+
+  content: "画面をタップ";
 
   position: absolute;
 
-  left: 50%;
+  bottom: 7%;
 
-  bottom: 8%;
+  left: 0;
 
-  transform: translateX(-50%);
+  right: 0;
 
-  padding: 15px 32px;
+  text-align: center;
 
-  border: 1px solid rgba(255,255,255,.75);
+  font-size: 18px;
 
-  border-radius: 8px;
+  text-shadow: 0 2px 5px #000;
 
-  background: rgba(0,0,0,.72);
-
-  color: #fff;
-
-  font-size: 20px;
-
-  font-weight: bold;
+  animation: blink 1.6s infinite;
 
 }
 
-/* 注意画面 */
+@keyframes blink {
+
+  0%,100% { opacity: 1; }
+
+  50% { opacity: .35; }
+
+}
 
 #warningScreen {
 
-  padding: 30px 24px;
+  padding: 30px 22px;
+
+  align-items: center;
+
+  justify-content: center;
 
   text-align: center;
 
@@ -120,85 +114,95 @@ body {
 
 .warning-box {
 
-  width: min(100%, 520px);
+  max-width: 600px;
 
   line-height: 1.9;
 
-}
-
-.warning-box h2 {
-
-  margin-bottom: 28px;
+  font-size: 16px;
 
 }
 
-.warning-box p {
+.warning-title {
 
-  margin: 0 0 22px;
+  font-size: 22px;
+
+  margin-bottom: 22px;
 
 }
 
-.warning-button {
+button {
 
-  margin-top: 20px;
+  margin-top: 24px;
 
-  padding: 15px 30px;
+  padding: 14px 28px;
 
   border: 1px solid #aaa;
 
-  border-radius: 8px;
+  border-radius: 4px;
 
-  background: #181818;
+  background: #111;
 
   color: #fff;
 
-  font-size: 18px;
+  font-size: 17px;
 
 }
 
-/* 画像確認画面 */
+#storyScreen {
 
-#gameScreen {
+  flex-direction: column;
 
-  position: relative;
+  justify-content: center;
 
-  overflow: hidden;
-
-  cursor: pointer;
+  align-items: center;
 
 }
 
-.game-image {
+#storyImage {
 
   width: 100%;
 
-  height: 100svh;
+  height: 100%;
 
-  object-fit: contain;
-
-  display: block;
-
-  background: #000;
+  object-fit: cover;
 
 }
 
-.counter {
+#textBox {
 
   position: absolute;
 
-  top: 12px;
+  left: 0;
 
-  right: 12px;
+  right: 0;
 
-  padding: 6px 10px;
+  bottom: 0;
 
-  border-radius: 6px;
+  min-height: 25%;
 
-  background: rgba(0,0,0,.65);
+  padding: 18px 20px 30px;
 
-  color: #fff;
+  background: rgba(0,0,0,.72);
 
-  font-size: 14px;
+  font-size: 17px;
+
+  line-height: 1.7;
+
+  white-space: pre-line;
+
+}
+
+#nextMark {
+
+  position: absolute;
+
+  right: 18px;
+
+  bottom: 8px;
+
+  font-size: 18px;
+
+  animation: blink 1.2s infinite;
 
 }
 
@@ -208,231 +212,281 @@ body {
 
 <body>
 
-<!-- タイトル -->
-
 <section id="titleScreen" class="screen active">
 
-  <img
-
-    src="01_title.PNG"
-
-    alt="学校の怪談シリーズ Ver.1 コックリさんの呪い"
-
-    class="title-image"
-
-  >
-
-  <button
-
-    class="start-button"
-
-    onclick="showWarning()"
-
-  >
-
-    ゲームを始める
-
-  </button>
+  <img src="01_title.PNG" class="full-image" alt="">
 
 </section>
-
-<!-- 注意 -->
 
 <section id="warningScreen" class="screen">
 
   <div class="warning-box">
 
-    <h2>― ご注意 ―</h2>
+    <div class="warning-title">― ご注意 ―</div>
 
-    <p>
+    このゲームはフィクションです。<br>
 
-      このゲームはフィクションです。<br>
+    作中には「コックリさん」を題材とした恐怖演出が登場します。<br><br>
 
-      作中には「コックリさん」を題材とした恐怖演出が登場します。
+    実際にコックリさんを行ったり、真似したりしないでください。<br><br>
 
-    </p>
+    また、暗い画面演出・効果音・恐怖表現が含まれます。<br>
 
-    <p>
+    苦手な方はご注意ください。<br><br>
 
-      実際にコックリさんを行ったり、真似したりしないでください。
+    覚悟を決めて、お進みください。<br>
 
-    </p>
-
-    <p>
-
-      また、暗い画面演出・効果音・恐怖表現が含まれます。<br>
-
-      苦手な方はご注意ください。
-
-    </p>
-
-    <p>
-
-      覚悟を決めて、お進みください。
-
-    </p>
-
-    <button
-
-      class="warning-button"
-
-      onclick="startGame()"
-
-    >
-
-      ゲームを始める
-
-    </button>
+    <button id="startButton">ゲームを始める</button>
 
   </div>
 
 </section>
 
-<!-- 画像確認 -->
+<section id="storyScreen" class="screen">
 
-<section id="gameScreen" class="screen" onclick="nextImage()">
+  <img id="storyImage" src="" alt="">
 
-  <img
+  <div id="textBox">
 
-    id="gameImage"
+    <span id="storyText"></span>
 
-    src="02_school_morning.PNG"
-
-    alt="ゲーム画像"
-
-    class="game-image"
-
-  >
-
-  <div id="counter" class="counter">
-
-    02 / 27
+    <span id="nextMark">▼</span>
 
   </div>
 
 </section>
+
+<audio id="schoolChime" preload="auto">
+
+  <source src="school_chime_base.wav" type="audio/wav">
+
+</audio>
 
 <script>
 
-const images = [
+const titleScreen = document.getElementById("titleScreen");
 
-  "02_school_morning.PNG",
+const warningScreen = document.getElementById("warningScreen");
 
-  "03_shoebox.PNG",
+const storyScreen = document.getElementById("storyScreen");
 
-  "04_hallway.PNG",
+const storyImage = document.getElementById("storyImage");
 
-  "05_stairs_day.PNG",
+const storyText = document.getElementById("storyText");
 
-  "06_classroom_day.PNG",
+const schoolChime = document.getElementById("schoolChime");
 
-  "07_artroom_day.PNG",
+let currentScene = 0;
 
-  "08_scienceroom_day.PNG",
+const scenes = [
 
-  "09_musicroom_day.PNG",
+  {
 
-  "10_kokkuri_day.PNG",
+    image: "02_school_morning.PNG",
 
-  "11_school_night.PNG",
+    text: "いつもと変わらない朝だった。",
 
-  "12_kokkuri_night.PNG",
+    chime: true
 
-  "13_kokkuri_yes.PNG",
+  },
 
-  "14_kokkuri_chi.PNG",
+  {
 
-  "15_kokkuri_no.PNG",
+    image: "03_shoebox.PNG",
 
-  "16_toilet_night.PNG",
+    text: "生徒たちが次々と登校してくる。\n今日も、いつもの一日が始まる。"
 
-  "17_toilet_door.PNG",
+  },
 
-  "18_stairs_night.PNG",
+  {
 
-  "19_stairs_figure.PNG",
+    image: "04_hallway.PNG",
 
-  "20_science_night.PNG",
+    text: "廊下には、友達と話す声や笑い声が響いていた。"
 
-  "21_skeleton_closeup.PNG",
+  },
 
-  "22_music_night.PNG",
+  {
 
-  "23_beethoven.PNG",
+    image: "05_stairs_day.PNG",
 
-  "24_four_corners.PNG",
+    text: "何度も上り下りしている、見慣れた階段。"
 
-  "25_four_corners_dark.PNG",
+  },
 
-  "26_final_yes_coin.PNG",
+  {
 
-  "27_classroom_door.PNG"
+    image: "06_classroom_day.PNG",
+
+    text: "教室も、いつもと変わらない。\n誰かが笑い、誰かが次の授業の準備をしている。"
+
+  },
+
+  {
+
+    image: "07_artroom_day.PNG",
+
+    text: "図工室では、生徒たちが絵を描いていた。"
+
+  },
+
+  {
+
+    image: "08_scienceroom_day.PNG",
+
+    text: "理科室。\n壁際には、古い骨格標本が置かれている。"
+
+  },
+
+  {
+
+    image: "08_scienceroom_day.PNG",
+
+    text: "よく見ると……左手首の先がない。\n壊れたまま、ずっと置かれているらしい。"
+
+  },
+
+  {
+
+    image: "09_musicroom_day.PNG",
+
+    text: "音楽室。\nピアノも、壁の肖像画も、今はただの見慣れた風景だった。"
+
+  },
+
+  {
+
+    image: "06_classroom_day.PNG",
+
+    text: "そして、放課後――。"
+
+  },
+
+  {
+
+    image: "06_classroom_day.PNG",
+
+    text: "「今日の放課後に、昔流行った遊びやらない？」"
+
+  },
+
+  {
+
+    image: "06_classroom_day.PNG",
+
+    text: "「昔流行った遊び？」"
+
+  },
+
+  {
+
+    image: "10_kokkuri_day.PNG",
+
+    text: "「コックリさん。」"
+
+  },
+
+  {
+
+    image: "10_kokkuri_day.PNG",
+
+    text: "4人は机を囲んだ。\n十円玉に指を置き、しばらく待ってみる。"
+
+  },
+
+  {
+
+    image: "10_kokkuri_day.PNG",
+
+    text: "…………。"
+
+  },
+
+  {
+
+    image: "10_kokkuri_day.PNG",
+
+    text: "十円玉は、1ミリも動かなかった。"
+
+  },
+
+  {
+
+    image: "10_kokkuri_day.PNG",
+
+    text: "「ほら、迷信じゃーん」"
+
+  },
+
+  {
+
+    image: "10_kokkuri_day.PNG",
+
+    text: "すると、一人の男子が笑いながら言った。"
+
+  },
+
+  {
+
+    image: "10_kokkuri_day.PNG",
+
+    text: "「なんなら、4人で集まって夜やらないか？」"
+
+  }
 
 ];
 
-let currentImage = 0;
+titleScreen.addEventListener("click", () => {
 
-function showWarning() {
+  titleScreen.classList.remove("active");
 
-  document
+  warningScreen.classList.add("active");
 
-    .getElementById("titleScreen")
+});
 
-    .classList.remove("active");
+document.getElementById("startButton").addEventListener("click", (event) => {
 
-  document
+  event.stopPropagation();
 
-    .getElementById("warningScreen")
+  warningScreen.classList.remove("active");
 
-    .classList.add("active");
+  storyScreen.classList.add("active");
 
-}
+  currentScene = 0;
 
-function startGame() {
+  showScene();
 
-  document
+});
 
-    .getElementById("warningScreen")
+function showScene() {
 
-    .classList.remove("active");
+  const scene = scenes[currentScene];
 
-  document
+  storyImage.src = scene.image;
 
-    .getElementById("gameScreen")
+  storyText.textContent = scene.text;
 
-    .classList.add("active");
+  if (scene.chime) {
 
-  showImage();
+    schoolChime.currentTime = 0;
 
-}
-
-function showImage() {
-
-  document.getElementById("gameImage").src =
-
-    images[currentImage];
-
-  const number =
-
-    String(currentImage + 2).padStart(2, "0");
-
-  document.getElementById("counter").textContent =
-
-    number + " / 27";
-
-}
-
-function nextImage() {
-
-  if (currentImage < images.length - 1) {
-
-    currentImage++;
-
-    showImage();
+    schoolChime.play().catch(() => {});
 
   }
 
 }
+
+storyScreen.addEventListener("click", () => {
+
+  if (currentScene < scenes.length - 1) {
+
+    currentScene++;
+
+    showScene();
+
+  }
+
+});
 
 </script>
 
