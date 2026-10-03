@@ -676,6 +676,13 @@ function showScene() {
     waterDropSound.play().catch(() => {});
 
 }
+if (scene.threeKnocks) {
+
+    threeKnocksSound.currentTime = 0;
+
+    threeKnocksSound.play().catch(() => {});
+
+}  
 if (scene.scaryNo) {
 
   storyText.style.color = "red";
