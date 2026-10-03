@@ -632,8 +632,8 @@ waterDrop: true
 
   image: "18_stairs_night.PNG",
 
-  text: "10……11……12……"
-
+  text: "10……11……12……",
+stairFootsteps: true
 },{
 
   image: "18_stairs_night.PNG",
@@ -662,7 +662,11 @@ coinSlideSound.preload = "auto";const waterDropSound = new Audio("02_water_drop.
 waterDropSound.preload = "auto";
  const threeKnocksSound = new Audio("03_three_knocks.wav");
 
-threeKnocksSound.preload = "auto"; 
+threeKnocksSound.preload = "auto";
+const stairFootstepsSound = new Audio("04_stair_footsteps.wav");
+
+stairFootstepsSound.preload = "auto";
+  
   
 titleScreen.addEventListener("click", () => {
 
@@ -719,6 +723,13 @@ if (scene.threeKnocks) {
     threeKnocksSound.currentTime = 0;
 
     threeKnocksSound.play().catch(() => {});
+
+}
+  if (scene.stairFootsteps) {
+
+    stairFootstepsSound.currentTime = 0;
+
+    stairFootstepsSound.play().catch(() => {});
 
 }  
 if (scene.scaryNo) {
