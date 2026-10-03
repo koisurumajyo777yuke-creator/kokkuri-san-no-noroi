@@ -481,14 +481,53 @@ const scenes = [
 
     image: "13_kokkuri_yes.PNG",
 
-    text: "十円玉が――動いた。"
+    text: "十円玉が――動いた。",
+coinSound: true
+  },
+{
 
-  }
+  image: "12_kokkuri_night.PNG",
 
+  text: "「コックリさん、コックリさん。\n一度鳥居にお戻り下さい」"
+
+},
+
+{
+
+  image: "12_kokkuri_night.PNG",
+
+  text: "十円玉は、ゆっくりと鳥居へ戻った。"
+
+},
+
+{
+
+  image: "12_kokkuri_night.PNG",
+
+  text: "…………。"
+
+},
   
 
-];
+{
 
+  image: "12_kokkuri_night.PNG",
+
+  text: "……誰も、何も聞いていない。\n\nその時――十円玉が勝手に動き始めた。"
+
+},
+
+{
+
+  image: "14_kokkuri_chi.PNG",
+
+  text: "あ……な……た……た……ち"
+
+}
+];
+const coinSlideSound = new Audio("01_coin_slide.wav");
+
+coinSlideSound.preload = "auto";
 titleScreen.addEventListener("click", () => {
 
   titleScreen.classList.remove("active");
@@ -525,7 +564,13 @@ function showScene() {
 
     schoolChime.play().catch(() => {});
 
-  }
+  if (scene.coinSound) {
+
+    coinSlideSound.currentTime = 0;
+
+    coinSlideSound.play().catch(() => {});
+
+}
 
 }
 
