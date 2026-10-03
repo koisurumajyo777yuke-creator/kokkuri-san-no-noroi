@@ -617,12 +617,15 @@ coinSound: true,
 
   image: "16_toilet_night.PNG",
 
-  text: "ピチャン……"
-
+  text: "ピチャン……",
+waterDrop: true
 }];
   const coinSlideSound = new Audio("01_coin_slide.wav");
 
-coinSlideSound.preload = "auto";
+coinSlideSound.preload = "auto";const waterDropSound = new Audio("02_water_drop.wav");
+
+waterDropSound.preload = "auto";
+  
 titleScreen.addEventListener("click", () => {
 
   titleScreen.classList.remove("active");
@@ -664,6 +667,13 @@ function showScene() {
     coinSlideSound.currentTime = 0;
 
     coinSlideSound.play().catch(() => {});
+
+}
+  if (scene.waterDrop) {
+
+    waterDropSound.currentTime = 0;
+
+    waterDropSound.play().catch(() => {});
 
 }
 if (scene.scaryNo) {
