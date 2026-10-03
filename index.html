@@ -575,7 +575,8 @@ coinSound: true
 },
 {image:"15_kokkuri_no.PNG", 
   text: "…………いいえ",
-coinSound: true
+coinSound: true,
+ scaryNo: true
   }];
   const coinSlideSound = new Audio("01_coin_slide.wav");
 
@@ -623,7 +624,13 @@ function showScene() {
     coinSlideSound.play().catch(() => {});
 
 }
+if (scene.scaryNo) {
 
+  storyText.style.color = "red";
+
+  storyText.classList.add("shake");
+
+}
 }
 
 storyScreen.addEventListener("click", () => {
