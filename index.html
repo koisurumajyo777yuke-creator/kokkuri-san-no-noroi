@@ -673,8 +673,8 @@ boneClick: true
 
   image: "22_music_night.PNG",
 
-  text: "ダメだ！ここじゃないよ！"
-
+  text: "ダメだ！ここじゃないよ！",
+pianoSound: true
 }];
 
 
@@ -702,6 +702,10 @@ scienceScrapeSound.preload = "auto";
 const boneClickSound = new Audio("06_bone_click.wav");
 
 boneClickSound.preload = "auto";  
+const pianoSound = new Audio("07_piano_single_note.wav");
+
+pianoSound.preload = "auto";
+  
 titleScreen.addEventListener("click", () => {
 
   titleScreen.classList.remove("active");
@@ -782,6 +786,16 @@ if (scene.threeKnocks) {
         boneClickSound.play().catch(() => {});
 
     }, 800);
+
+}if (scene.pianoSound) {
+
+    pianoSound.currentTime = 0;
+
+    setTimeout(() => {
+
+        pianoSound.play().catch(() => {});
+
+    }, 500);
 
 }
 if (scene.scaryNo) {
