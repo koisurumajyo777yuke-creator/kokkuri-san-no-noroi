@@ -697,8 +697,8 @@ pianoSound: true
 
   image: "25_four_corners_dark.PNG",
 
-  text: "……誰かが、歩いている。"
-
+  text: "……誰かが、歩いている。",
+fourCornersSound: true
 }
 ];
 
@@ -729,7 +729,9 @@ boneClickSound.preload = "auto";
 const pianoSound = new Audio("07_piano_single_note.wav");
 
 pianoSound.preload = "auto";
-  
+ const fourCornersSound = new Audio("08_four_corners_steps_and_tap.wav");
+
+fourCornersSound.preload = "auto"; 
 titleScreen.addEventListener("click", () => {
 
   titleScreen.classList.remove("active");
@@ -822,6 +824,13 @@ if (scene.threeKnocks) {
         pianoSound.play().catch(() => {});
 
     }, 500);
+
+}
+  if (scene.fourCornersSound) {
+
+    fourCornersSound.currentTime = 0;
+
+    fourCornersSound.play().catch(() => {});
 
 }
 if (scene.scaryNo) {
