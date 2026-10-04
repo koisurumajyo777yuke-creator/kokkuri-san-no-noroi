@@ -713,6 +713,13 @@ chime: true
 
   text: "扉を開けてみる",
 
+},
+{
+
+  image: "27_classroom_door.PNG",
+
+  text: "カチャ……。\n\n扉が、開いた。\n\n……外へ出られる。"
+
 }
 ];
 
@@ -864,13 +871,13 @@ if (scene.fourCornersSound) {
 }
 storyScreen.addEventListener("click", () => {
 
-    if (currentScene === scenes.length - 1) {
+    if (currentScene === scenes.length - 2) {
 
         doorUnlockSound.currentTime = 0;
 
         doorUnlockSound.play().catch(() => {});
 
-        return;
+        
 
     }
 
