@@ -706,6 +706,13 @@ fourCornersSound: true
 
   text: "……",
 chime: true
+},
+{
+
+  image: "27_classroom_door.PNG",
+
+  text: "扉を開けてみる",
+
 }
 ];
 
@@ -739,6 +746,10 @@ pianoSound.preload = "auto";
  const fourCornersSound = new Audio("08_four_corners_steps_and_tap.wav");
 
 fourCornersSound.preload = "auto"; 
+const fourCornersSound = new Audio("08_four_corners_steps_and_tap.wav");
+
+fourCornersSound.preload = "auto";
+  
 titleScreen.addEventListener("click", () => {
 
   titleScreen.classList.remove("active");
@@ -833,14 +844,17 @@ if (scene.threeKnocks) {
     }, 500);
 
 }
-  if (scene.fourCornersSound) {
+if (scene.fourCornersSound) {
 
     fourCornersSound.currentTime = 0;
 
     fourCornersSound.play().catch(() => {});
 
 }
-if (scene.scaryNo) {
+
+
+
+  if (scene.scaryNo) {
 
   storyText.style.color = "red";
 
@@ -848,18 +862,28 @@ if (scene.scaryNo) {
 
 }
 }
+  storyScreen.addEventListener("click", () => {
 
-storyScreen.addEventListener("click", () => {
+    if (currentScene === scenes.length - 1) {
 
-  if (currentScene < scenes.length - 1) {
+        doorUnlockSound.currentTime = 0;
 
-    currentScene++;
+        doorUnlockSound.play().catch(() => {});
 
-    showScene();
+        return;
 
-  }
+    }
+
+    if (currentScene < scenes.length - 1) {
+
+        currentScene++;
+
+        showScene();
+
+    }
 
 });
+
 
 </script>
 
